@@ -9,7 +9,7 @@ import java.util.*;
  * auf dem Aufgabenblatt gelten.
  */
 
-public class PraxisAufgabe {
+public class PraxisApplication {
 
     /*
     Aufgabe: siehe Angabeblatt

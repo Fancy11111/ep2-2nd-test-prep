@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * auf dem Aufgabenblatt gelten.
  */
 
-public class PraxisAufgabe {
+public class PraxisApplication {
 
     /*
     Aufgabe: siehe Angabeblatt

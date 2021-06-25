@@ -51,7 +51,6 @@ public class ComposedOperator implements StringOperator {
         return firstOper.hashCode() + secondOper.hashCode();
     }
 
-    //TODO: define missing parts of this class.
     public static class CompIter implements Iterator<StringOperator> {
 
         private final Iterator<StringOperator> firstIter, secondIter;

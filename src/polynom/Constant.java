@@ -10,7 +10,6 @@ import java.util.*;
 //
 public class Constant implements Polynomial {
 
-    //TODO: define missing parts of this class.
     private final int a;
 
 

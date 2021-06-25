@@ -7,10 +7,9 @@ import java.util.NoSuchElementException;
 // Alle übrigen Zahlen von 'source' sind Teil der gefilterten Folge.
 // hasNext() und next() beziehen sich auf die gefilterte Folge.
 class FilterMultiples implements FilteredGenerator {
-    //TODO: Fehlende Teile der Klasse implementieren
 
     private final Generator source;
-    private int div;
+    private final int div;
     private int number;
     private boolean exists;
 

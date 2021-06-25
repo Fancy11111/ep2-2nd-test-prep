@@ -12,14 +12,12 @@ import java.util.*;
 //
 public class HornerScheme implements Polynomial {
 
-    //TODO: define missing parts of this class.
     private final int a;
     private Polynomial p;
 
     // Initializes this object.
     // Precondition: 'p' must not be 'null'.
     public HornerScheme(int a, Polynomial p) {
-        //TODO: implement this constructor.
         this.a = a;
         this.p = p;
     }

@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 // This class can be modified and is for testing your solution.
 // Modifications will NOT be reviewed or assessed.
 //
-public class PraxisApplicationTest2 {
+public class PraxisApplication {
 
     public static void main(String[] args) {
 

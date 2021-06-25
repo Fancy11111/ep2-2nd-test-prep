@@ -2,7 +2,7 @@ package expression;
 
 import java.util.NoSuchElementException;
 
-public class PraxisAufgabe {
+public class PraxisApplication {
 
     /*
     Aufgabe: siehe Angabeblatt
