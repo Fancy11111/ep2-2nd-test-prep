@@ -33,6 +33,7 @@ public class CelestialSystem implements Orbitable {
     public String toString() {
         String s = centralBody.toString();
         for(Orbitable o : this) {
+            // stream flex
 //            s += Arrays.stream(o.toString().split("\n"))
 //                    .reduce("", (cs, ts) -> cs + "\n\t"  + ts);
             String[] lines = o.toString().split("\n");
