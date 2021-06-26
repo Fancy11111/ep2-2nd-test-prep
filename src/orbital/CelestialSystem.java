@@ -1,6 +1,7 @@
 package orbital;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 // A celestial system implements 'Orbitable' and has at least one object in orbit around its
@@ -9,12 +10,18 @@ import java.util.NoSuchElementException;
 public class CelestialSystem implements Orbitable {
 
     private final CelestialBody centralBody;
-    private Node inOrbit;
+    private ArrayList<Orbitable> inOrbit;
 
     // Initialises this system with its central body.
     public CelestialSystem(CelestialBody centralBody, Orbitable inOrbit) {
         this.centralBody = centralBody;
-        this.inOrbit = new Node(inOrbit);
+        this.inOrbit = new ArrayList<Orbitable>();
+        this.inOrbit.add(inOrbit);
+    }
+
+    private CelestialSystem(CelestialBody centralBody, ArrayList<Orbitable> inOrbit) {
+        this.centralBody = centralBody;
+        this.inOrbit = inOrbit;
     }
 
 
@@ -25,8 +32,9 @@ public class CelestialSystem implements Orbitable {
 
     @Override
     public Orbitable add(Orbitable inOrbit) {
-        this.inOrbit.add(inOrbit);
-        return this;
+        ArrayList<Orbitable> copy = (ArrayList<Orbitable>) this.inOrbit.clone();
+        copy.add(inOrbit);
+        return new CelestialSystem(centralBody, copy);
     }
 
     @Override
@@ -46,56 +54,22 @@ public class CelestialSystem implements Orbitable {
 
     @Override
     public OrbitIterator iterator() {
-        return new SystemIter(inOrbit);
-    }
 
-    private static class SystemIter implements OrbitIterator {
-
-        private Node curr;
-
-        SystemIter(Node curr) {
-            this.curr = curr;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return curr != null;
-        }
-
-        @Override
-        public Orbitable next() {
-            if(!hasNext()) {
-                throw new NoSuchElementException("no more elements for you");
+        return new OrbitIterator() {
+            private Iterator<Orbitable> iterator = inOrbit.iterator();
+            @Override
+            public boolean hasNext() {
+                return iterator().hasNext();
             }
-            Orbitable next = curr.getVal();
-            curr = curr.getNext();
-            return next;
-        }
-    }
 
-    private static class Node {
-        private Orbitable val;
-        private Node next;
-        public Node(Orbitable val) {
-            this.val = val;
-        }
-
-        public void add(Orbitable val) {
-            if(next != null) {
-                next.add(val);
+            @Override
+            public Orbitable next() {
+                if(!hasNext()) {
+                    throw new NoSuchElementException("no more elements for you");
+                }
+                return iterator().next();
             }
-            else {
-                next = new Node(val);
-            }
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public Orbitable getVal() {
-            return val;
-        }
+        };
     }
 }
 
