@@ -59,7 +59,7 @@ public class CelestialSystem implements Orbitable {
             private Iterator<Orbitable> iterator = inOrbit.iterator();
             @Override
             public boolean hasNext() {
-                return iterator().hasNext();
+                return iterator.hasNext();
             }
 
             @Override
@@ -67,7 +67,7 @@ public class CelestialSystem implements Orbitable {
                 if(!hasNext()) {
                     throw new NoSuchElementException("no more elements for you");
                 }
-                return iterator().next();
+                return iterator.next();
             }
         };
     }
