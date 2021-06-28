@@ -78,7 +78,7 @@ class NonEmpty implements Interval {
 
     @Override
     public int hashCode() {
-        return Math.abs(lower) * Math.abs(upper) + Math.abs(lower) + Math.abs(upper);
+        return lower * upper * (lower + upper);
     }
 
     public static class IntervalIter implements Iterator {
